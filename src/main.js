@@ -7,9 +7,7 @@ import apiConfig from './config/api.config'
 
 Vue.prototype.$http = http; 
 http.defaults.baseURL = apiConfig;
-http.defaults.withCredentials = true;
- 
-console.log(apiConfig)
+http.defaults.withCredentials = true; 
 http.defaults.baseURL = apiConfig;
 http.defaults.withCredentials = true;
 Vue.prototype.host="" 

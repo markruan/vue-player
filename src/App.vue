@@ -4,7 +4,7 @@
 		<div class="view" v-show="!isFullPlayer">
 			<router-view />
 		</div>
-		<VuePlayer />
+		<VuePlayer/>
 	</div>
 </template>
 

@@ -23,7 +23,9 @@ const store = new Vuex.Store({
         songArtist: {},
         showAplayer: true,
         playList:[],
-        userinfo:''
+        userinfo:'',
+		currentIndex:0,
+		isFullPlayer:false
     },
     mutations: {
         setSongName(state, name) {
@@ -60,8 +62,13 @@ const store = new Vuex.Store({
         },
         setUserInfo(state,info){
           state.userinfo=info
-        }
-
+        },
+		setCurrentIndex(state,index){
+		  state.currentIndex=index	
+        },
+		setIsFullPlayer(state,set){
+			state.isFullPlayer=set
+		}
 
     },
     actions: {
@@ -98,6 +105,12 @@ const store = new Vuex.Store({
         setUserInfoActions(context, list) {
             context.commit('setUserInfo', list)
         },
+		setCurrentIndexActions(context,index){
+			context.commit('setCurrentIndex',index)
+		},
+		setIsFullPlayerActions(context,set){
+			context.commit("setIsFullPlayer",set)
+		}
 
     }
 })

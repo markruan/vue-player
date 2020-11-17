@@ -6,10 +6,7 @@
     </div>
     <div class="rankContent" v-show="rankInfo.length"> 
       <h4 class="title">官方榜</h4>
-   <div class="rankContent" v-show="rankInfo.length">
-      <van-loading size="24px">加载中...</van-loading>
-      <h4>官方榜</h4> 
-      <div
+    <div
         @click="rankClick(item.id)"
         class="officialBox"
         v-for="(item,index) in rankInfo.slice(0,4)"

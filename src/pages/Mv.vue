@@ -67,8 +67,7 @@ export default {
     openMv() {
       const this_ = this;
       this.$http 
-        .get("/mv/url", { params: { id: this.$route.params.id } }) 
-        .get(this.host + "/mv/url", { params: { id: this.$route.params.id } }) 
+        .get("/mv/url", { params: { id: this.$route.params.id } })   
         .then(function(response) {
           this_.video.url = response.data.data.url;
         })
