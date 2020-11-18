@@ -18,12 +18,13 @@ import LyricScroll from 'vue-lyric-scroll'
 Vue.use(LyricScroll)
 // import Vant from 'vant';
 import 'vant/lib/index.css';
-import { Lazyload,Popup,Image,Button,NavBar,List,Cell,CellGroup,Tab,Tabs,Loading,Grid,GridItem,Icon,Swipe,SwipeItem } from 'vant';
+import { Lazyload,Popup,ActionSheet,Image,Button,NavBar,List,Cell,CellGroup,Tab,Tabs,Loading,Grid,GridItem,Icon,Swipe,SwipeItem } from 'vant';
 import Carousel3d from 'vue-carousel-3d';
 
 Vue.use(Carousel3d);
  
 Vue.use(Image);
+Vue.use(ActionSheet);
 Vue.use(Button);
 Vue.use(NavBar);
 Vue.use(List);

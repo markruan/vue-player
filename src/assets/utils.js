@@ -2,7 +2,8 @@
  * 判断是否在数组内
  * @param {arry}  
  */
-export function ishas(arr, val) {
+ 
+const ishas=function(arr,val){
 	var i = arr.length;
 	while (i--) {
 		if (arr[i].songId == val.songId) {
@@ -10,4 +11,7 @@ export function ishas(arr, val) {
 		}
 	}
 	return false;
+}
+export default{
+  ishas
 }

@@ -60,8 +60,7 @@ export default {
         }
       }, 1000);
     },
-    sengSongInfo(item) {
-		console.log(item)
+    sengSongInfo(item) { 
         const id= item.id 
         this.setSongIdActions(id)
 		this.setCurrentIndexActions(this.playList.length)

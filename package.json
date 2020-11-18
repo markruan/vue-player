@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "@langnang/vue-audio-player": "^0.1.7",
     "axios": "^0.20.0",
     "core-js": "^2.6.5",

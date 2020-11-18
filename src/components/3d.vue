@@ -14,11 +14,7 @@
       <!--通过插槽作用域可以拿到点击的图片的索引--> 
       <template slot-scope="">
         <img :src="setImg(item.coverImgUrl)" style="border-radius:5px" alt />
- 
-      <template slot-scope="obj">
-        <img :src="item.coverImgUrl +'?param=300y300'" alt />
- 
-      </template>
+     </template>
     </slide>
   </carousel-3d>
 </template>>

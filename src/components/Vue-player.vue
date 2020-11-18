@@ -2,7 +2,7 @@
 	<div class="musicPlay" v-if="songUrl" v-show="showAplayer">
 		<audio ref="aplayer" controls="controls" :src="this.songUrl" @timeupdate="timeupdate" @play="play" />
 		<!--        迷你播放器-->
-		<div v-show="minOrMax" class="audio-com-box-min">
+		<div v-show="minOrMax||!isFullPlayer" class="audio-com-box-min">
 			<van-image @click="showFullPlayer" round width="50px" height="50px" :src="songImg" :class="{'Rotation':playing}" />
 			<div class="musicName" @click="showFullPlayer">
 				<p>{{songName===''?'正在播放电台':songName}}</p>
@@ -11,11 +11,17 @@
 			<div class="musicIcon">
 				<van-icon v-show="!playing" name="play-circle-o" size="36px" color="#bfbfbf" @click="isplay" />
 				<van-icon v-show="playing" name="pause-circle-o" size="36px" color="#bfbfbf" @click="ispause" />
-			    <van-icon class="menu" name="bars"  size="36px" color="#bfbfbf" />
+				<van-icon class="menu" name="bars" @click="showPlayList" size="36px" color="#bfbfbf" />
 			</div>
 		</div>
+		<van-action-sheet v-model="showList" title="播放列表">
+			<van-list  
+			>
+			  <van-cell @click="setSongId(item.songId)" v-for="item in playList" :key="item.songId" :title="item.songName+'--'+item.songArtist" />
+			</van-list>
+		</van-action-sheet>
 		<!--全屏模式-->
-		<div v-show="!minOrMax">
+		<div v-show="!minOrMax&&isFullPlayer">
 			<fullplayer />
 			<div class="audio-player">
 				<div class="audio__btn-wrap">
@@ -59,6 +65,7 @@
 	export default {
 		name: "app",
 		data: () => ({
+			showList: false,
 			musicInfo: {},
 			minOrMax: true,
 			sliderTime: 0,
@@ -94,7 +101,7 @@
 			showAplayer(val) {
 				// console.log(val)
 			},
-			currentTime: function(val) { 
+			currentTime: function(val) {
 				if (val) {
 					this.lyricShow = true;
 				}
@@ -134,10 +141,13 @@
 				"setPlayingActions",
 				"setShowAplayerActions",
 				"setIsFullPlayerActions",
-
+				"setPlayListActions"
 			]),
 			handleEvent(e) {
 				// console.log(e);
+			},
+			setSongId(id){
+			  	this.setSongIdActions(id)
 			},
 			isplay(e) {
 				this.setPlayingActions(true);
@@ -154,7 +164,7 @@
 				//  console.log(e);
 				this.setPlayingActions(false);
 			},
-			timeupdate(e) { 
+			timeupdate(e) {
 				this.setCurrentTimeActions(e.target.currentTime);
 				this.setDurationActions(e.target.duration);
 			},
@@ -167,11 +177,19 @@
 						ids: this.songId
 					}
 				});
-				if (songData) { 
+				if (songData) {
 					this.setSongNameActions(songData.data.songs[0].name);
 					this.setSongIdActions(songData.data.songs[0].id);
 					this.setSongImgActions(songData.data.songs[0].al.picUrl);
 					this.setSongArtistActions(songData.data.songs[0].ar[0].name);
+					const data = songData.data.songs[0]
+					const list = {
+						songName: data.name,
+						songId: data.id,
+						songImg: data.al.picUrl,
+						songArtist: data.ar[0].name
+					}
+					this.setPlayListActions(list)
 				}
 				const this_ = this;
 				this.$http
@@ -198,8 +216,11 @@
 				this.setIsFullPlayerActions(true)
 			},
 			playerPause() {
-			  this.setPlayingActions(!this.playing);
+				this.setPlayingActions(!this.playing);
 			},
+			showPlayList() {
+				this.showList = true
+			}
 		}
 	};
 </script>>
@@ -264,8 +285,8 @@
 	/*音频图标*/
 
 	.musicIcon {
-		 flex: none;
- 
+		flex: none;
+
 	}
 
 	.move-enter-active,
@@ -410,7 +431,13 @@
 		display: block;
 		margin: 0 auto;
 	}
-	.menu{
+
+	.menu {
 		padding-left: 2px;
+	}
+
+	.content {
+		padding: 16px 16px 160px;
+		max-height: 40%;
 	}
 </style>

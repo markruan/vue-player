@@ -4,8 +4,8 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
+import tool from "@/assets/utils.js" 
  
-
 //挂载Vuex
 Vue.use(Vuex)
 
@@ -58,7 +58,10 @@ const store = new Vuex.Store({
             state.showAplayer = showAplayer
         },
         setPlayList(state,list){
-          state.playList=list
+		  console.log(tool.ishas(state.playList,list))
+          if(!tool.ishas(state.playList,list)){
+			  state.playList.push(list)
+		  }
         },
         setUserInfo(state,info){
           state.userinfo=info
