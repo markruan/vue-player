@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div v-if="islogin" style="margin-top:5%">
+    <div v-if="islogin" style="margin-top:2%">
       <div class="mian">
-        <van-image round width="6rem" height="6rem" :src="user_info.avatarUrl" />
+        <van-image round width="4rem" height="4rem" :src="user_info.avatarUrl" />
       </div>
 
-      <h3 style="text-align: center;" v-text="user_info.nickname||'未登录'"></h3>
-      <h5 style="text-align: center;" v-text="user_info.signature"></h5>
+      <h4 style="text-align: center;margin: 0.125rem;" v-text="user_info.nickname||'未登录'"></h4>
+      <h5 style="text-align: center;margin: 0.125rem;" v-text="user_info.signature"></h5>
       <van-grid clickable :column-num="3" :border="false">
         <van-grid-item text="动态" to="/">
           <template #icon>
