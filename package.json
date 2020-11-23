@@ -20,6 +20,7 @@
     "vue-lyric-scroll": "^1.0.5",
     "vue-mini-player": "^0.1.5",
     "vue-router": "^3.4.9",
+    "vue2-animate": "^2.1.4",
     "vuex": "^3.5.1"
   },
   "devDependencies": {

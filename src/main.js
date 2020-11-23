@@ -4,6 +4,7 @@ import http from "axios"
 import router from './router'
 import store from './store'
 import apiConfig from './config/api.config'
+import 'vue2-animate/dist/vue2-animate.min.css'
 
 Vue.prototype.$http = http; 
 http.defaults.baseURL = apiConfig;

@@ -2,17 +2,10 @@
 	<div>
 		<van-nav-bar title="歌单广场" left-text="返回" @click-left="onClickLeft" left-arrow />
 		<van-tabs v-model="active" sticky @change="indexChange" swipeable>
-			<van-tab v-for="item in catList.slice(1,catList.length-1)" :key="item.id" :title="item.name" animated>
+			<van-tab v-for="(item,index) in catList.slice(1,catList.length-1)" :key="item.id" :title="item.name" animated>
 				<van-loading v-if="isloading" type="circular" color="#1989fa" vertical />
 				<van-grid v-else :column-num="3" :border="false">
-					<Pic3d :slides="geDanList" />
-					<ImgList :listInfo="geDanList" />
-				</van-grid>
-			</van-tab>
-			<van-tab v-for="(item,i) in catList" :key="item.id" :title="item.name " animated>
-				<van-loading v-if="isloading" type="circular" color="#1989fa" vertical />
-				<van-grid v-else :column-num="3" :border="false">
-					<Pic3d :slides="geDanList" v-if=" i==1" />
+					<Pic3d :slides="geDanList" v-if="index==0" />
 					<ImgList :listInfo="geDanList" />
 				</van-grid>
 			</van-tab>

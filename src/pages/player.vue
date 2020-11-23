@@ -51,9 +51,9 @@
 			this.setShowAplayerActions(false);
 		},
 		watch: {
-          songId(val){
-			  this.init() 
-		  }
+			songId(val) {
+				this.init()
+			}
 		},
 		beforeRouteLeave(to, from, next) {
 			next();
